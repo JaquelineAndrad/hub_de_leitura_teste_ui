@@ -1,0 +1,24 @@
+{
+  "name": "hub_de_leitura_teste_ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaquelineAndrad/hub_de_leitura_teste_ui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JaquelineAndrad/hub_de_leitura_teste_ui/issues"
+  },
+  "homepage": "https://github.com/JaquelineAndrad/hub_de_leitura_teste_ui#readme",
+  "dependencies": {
+    "cypress": "^15.9.0"
+  }
+}
