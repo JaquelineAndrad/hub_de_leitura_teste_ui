@@ -60,18 +60,4 @@ describe('Fucionalidades:Contato', () => {
 
 
 
-
-
-
-
   })
-
-
-  it('Deve preencher o formulério corretamente', () => {
-  })
-
-
-  it('Deve preencher o formulério corretamente', () => {
-  })
-
-

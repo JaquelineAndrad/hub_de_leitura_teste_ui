@@ -25,7 +25,7 @@ describe('Cadastro no Hub de Leitura', () => {
         
     });
   
-     it.only('Deve realizar cadastro com faker ', () => {
+     it('Deve realizar cadastro com faker ', () => {
         let name = faker.person.fullName()
         let email = faker.internet.email()
         cy.get('#name').type(name)
@@ -37,12 +37,45 @@ describe('Cadastro no Hub de Leitura', () => {
         cy.get('#register-btn').click()
 
         //Resultado esperado
-        cy.url().should('include',' dashboard')
+        cy.url().should('include','dashboard')
         cy.get('#user-name').should('contain',name )
+
+        it('Não deve permitir cadastro com campos obrigatórios vazios', () => {
+        cy.get('#register-btn').click()
+        cy.contains('Campo obrigatório').should('be.visible')
+          
+         })
+
         
         
     });
 
+     it('Não deve permitir cadastro com senhas diferentes', () => {
+  cy.get('#name').type(faker.person.fullName())
+  cy.get('#email').type(faker.internet.email())
+  cy.get('#phone').type('11999999999')
+  cy.get('#password').type('123456')
+  cy.get('#confirm-password').type('654321')
+  cy.get('#terms-agreement').check()
+  cy.get('#register-btn').click()
+
+  // Resultado esperado: mensagem de erro
+  cy.contains('Senhas não coincidem').should('be.visible')
+})
+
+  it('Não deve permitir cadastro sem aceitar os termos', () => {
+  cy.get('#name').type(faker.person.fullName())
+  cy.get('#email').type(faker.internet.email())
+  cy.get('#phone').type('11999999999')
+  cy.get('#password').type('123456')
+  cy.get('#confirm-password').type('123456')
+
+  // Não marca o checkbox de termos
+  cy.get('#register-btn').click()
+
+  // Resultado esperado: bloqueio do cadastro
+  cy.contains('Você deve aceitar os termos').should('be.visible')
+})
 
 
 });
